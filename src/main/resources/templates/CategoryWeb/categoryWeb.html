@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Factory - Categorias</title>
+    <link rel="stylesheet" href="/categoryWeb.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-top">
+                <h1>Quiz Factory</h1>
+                <button class="btn-add-quiz" onclick="toggleNewQuizForm()">+ Adicionar Pergunta</button>
+            </div>
+            <p class="subtitle">Escolha uma categoria para começar</p>
+        </header>
+
+        <!-- Modal de Novo Quiz -->
+        <div id="new-quiz-modal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Adicionar Nova Pergunta</h2>
+                    <button class="close-btn" onclick="toggleNewQuizForm()">&times;</button>
+                </div>
+                <form id="new-quiz-form" onsubmit="submitNewQuiz(event)">
+                    <div class="form-group">
+                        <label for="category">Categoria:</label>
+                        <input type="text" id="category" name="category" required placeholder="Digite ou selecione uma categoria">
+                        <div id="category-suggestions" class="suggestions"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="question">Pergunta:</label>
+                        <textarea id="question" name="question" required placeholder="Digite a pergunta" rows="3"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="answer">Resposta:</label>
+                        <textarea id="answer" name="answer" required placeholder="Digite a resposta" rows="3"></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="level">Nível de Dificuldade:</label>
+                            <select id="level" name="level" required>
+                                <option value="">Selecione...</option>
+                                <option value="Easy">Fácil</option>
+                                <option value="Medium">Médio</option>
+                                <option value="Hard">Difícil</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="value">Pontuação:</label>
+                            <input type="number" id="value" name="value" required placeholder="Pontos" min="1">
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn-cancel" onclick="toggleNewQuizForm()">Cancelar</button>
+                        <button type="submit" class="btn-submit" id="submit-btn">Adicionar Pergunta</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <main class="main-content">
+            <div id="loading" class="loading">
+                <div class="spinner"></div>
+                <p>Carregando categorias...</p>
+            </div>
+
+            <div id="categories-grid" class="categories-grid">
+                <!-- Categorias serão inseridas aqui via JavaScript -->
+            </div>
+
+            <div id="error-message" class="error-message" style="display: none;">
+                <p>Erro ao carregar categorias. Por favor, tente novamente.</p>
+            </div>
+
+            <div id="success-message" class="success-message" style="display: none;">
+                <p id="success-text"></p>
+            </div>
+        </main>
+    </div>
+
+    <script src="/categoryWeb.js"></script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Factory - Perguntas</title>
+    <link rel="stylesheet" href="/questionFlow.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <a href="/quiz-factory/categories" class="back-button">← Voltar</a>
+                <h1 id="category-title">Categoria</h1>
+                <div class="header-stats">
+                    <span id="question-counter">1/10</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div id="loading" class="loading">
+                <div class="spinner"></div>
+                <p>Carregando perguntas...</p>
+            </div>
+
+            <div id="question-container" class="question-container" style="display: none;">
+                <div class="timer-container">
+                    <svg class="timer-svg" viewBox="0 0 120 120">
+                        <circle class="timer-circle-bg" cx="60" cy="60" r="54"></circle>
+                        <circle class="timer-circle" id="timer-circle" cx="60" cy="60" r="54"></circle>
+                    </svg>
+                    <div class="timer-text">
+                        <span id="timer-value">30</span>
+                        <p>segundos</p>
+                    </div>
+                </div>
+
+                <div class="question-content">
+                    <div class="question-card">
+                        <h2 id="question-text">Pergunta aqui</h2>
+                    </div>
+
+                    <div class="answer-section">
+                        <button id="reveal-button" class="reveal-button">Revelar Resposta</button>
+                        
+                        <div id="answer-card" class="answer-card" style="display: none;">
+                            <p id="answer-text">Resposta aqui</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="navigation">
+                    <button id="prev-button" class="nav-button prev-button" disabled>
+                        ← Anterior
+                    </button>
+                    
+                    <div class="progress-dots" id="progress-dots">
+                        <!-- Dots serão inseridos aqui via JavaScript -->
+                    </div>
+                    
+                    <button id="next-button" class="nav-button next-button">
+                        Próxima →
+                    </button>
+                </div>
+            </div>
+
+            <div id="completion-screen" class="completion-screen" style="display: none;">
+                <div class="completion-card">
+                    <h2>Parabéns!</h2>
+                    <p>Você completou todas as perguntas desta categoria.</p>
+                    <a href="/quiz-factory/categories" class="completion-button">Voltar ao Início</a>
+                </div>
+            </div>
+
+            <div id="error-message" class="error-message" style="display: none;">
+                <p>Erro ao carregar perguntas. Por favor, tente novamente.</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="/questionFlow.js"></script>
+</body>
+</html>
